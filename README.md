@@ -46,7 +46,7 @@ if (isset($_FILES["file"])) {
 | `get_path(String)` |  Get with path *Return: String* |
 
 
-#### Getting file with path
+#### Getting file name with path
 ```php
 echo $upload->get_path($upload->get_name()); // uploads/files/hello.png
 ```
