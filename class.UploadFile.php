@@ -26,6 +26,7 @@ class UploadFile {
         "invalid_type" => "File type is invalid.",
         "long_size" => "File size is too long.",
         "file_exists" => "File is already exists.",
+        "unknown_error" => "File is not uploaded the server.",
     );
 
     private $error = null;
@@ -114,16 +115,21 @@ class UploadFile {
         else if ($this->override === false && file_exists($this->get_path($this->get_name()))) {
             $this->error = $this->error_messages["file_exists"];
         }
+        else if ($this->file["error"] == 1 && $this->file["error"] == 2) {
+            $this->error = $this->error_messages["long_size"];
+        }
+        else if ($this->file["error"] == 4) {
+            $this->error = $this->error_messages["empty_file"];
+        }
+        else if ($this->file["error"] > 0) {
+            $this->error = $this->error_messages["unknown_error"];
+        }
 
         if ($this->error === null) {
-
             return true;
-
         }
         else {
-
             return false;
-
         }
 
     }
@@ -142,7 +148,7 @@ class UploadFile {
                 mkdir($this->get_path(), 0777, true);
             }
 
-            move_uploaded_file($this->file["tmp_name"], $this->get_path($this->get_name()));
+            @move_uploaded_file($this->file["tmp_name"], $this->get_path($this->get_name()));
 
         }
 
@@ -164,13 +170,13 @@ class UploadFile {
 
     }
 
-    public function get_ext($filename) {
+    private function get_ext($filename) {
 
         return strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 
     }
 
-    public function mb_to_byte($filesize) {
+    private function mb_to_byte($filesize) {
 
         return $filesize * 1000000;
 
