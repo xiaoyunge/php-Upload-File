@@ -48,5 +48,5 @@ if (isset($_FILES["file"])) {
 
 #### Getting file with path
 ```php
-$upload->get_path($upload->get_name()); // uploads/files/hello.png
+echo $upload->get_path($upload->get_name()); // uploads/files/hello.png
 ```
