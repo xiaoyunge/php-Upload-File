@@ -144,13 +144,6 @@ class UploadFile {
 
             move_uploaded_file($this->file["tmp_name"], $this->get_path($this->get_name()));
 
-            return true;
-
-        }
-        else {
-
-            return false;
-            
         }
 
     }
