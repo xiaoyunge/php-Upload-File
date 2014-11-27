@@ -33,17 +33,17 @@ if (isset($_FILES["file"])) {
 
 | Name & Type | Description | 
 | ----------- | ----------- |
-| `allowed_extensions(array())` | Allowed file extensions. *Default: All* |
-| `allowed_types(array())` | Allowed mime types. *Default: All* |
-| `max_size(int)` | Max file size (megabyte). *Default: Unlimited*  |
-| `new_name(String)` | Rename file. Default: *Current* |
-| `path(String)` | Upload files directory. *Default: Root* |
-| `override(boolean)` | Force upload even if file exists. *Default: Get error* |
-| `check()` | Is successfully. *Return: true \| false* |
-| `error()` | Get error text. *Return: String* |
+| `allowed_extensions(array())` | Allowed file extensions. Default is all. |
+| `allowed_types(array())` | Allowed mime types. Default is all. |
+| `max_size(int)` | Max file size (megabyte). Default is unlimited.  |
+| `new_name(String)` | Rename file. Default: Default is current. |
+| `path(String)` | Upload files directory. Default is script path. |
+| `override(boolean)` | Force upload even if file exists. Default is getting error. |
+| `check()` | Is successfully. Return: TRUE or FALSE |
+| `error()` | Get error text. Return: String |
 | `upload()` |  Upload file. |
-| `get_name()` |  Get uploaded file name *Return: String* |
-| `get_path(String)` |  Get with path *Return: String* |
+| `get_name()` |  Get uploaded file name. Return: String |
+| `get_path(String)` |  Get with path. Return: String |
 
 
 #### Getting file name with path
